@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.adapter;
+package com.example.rxjavaexample.common.helper;
 
 import android.widget.ImageView;
 

@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.adapter;
+package com.example.rxjavaexample.views.tikets;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rxjavaexample.R;
+import com.example.rxjavaexample.common.helper.ImageLoader;
 import com.example.rxjavaexample.models.dto.Ticket;
 
 import java.util.ArrayList;

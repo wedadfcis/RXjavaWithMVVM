@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import com.example.rxjavaexample.R;
 import com.example.rxjavaexample.views.Base.BaseFragment;
 import com.example.rxjavaexample.models.dto.Ticket;
-import com.example.rxjavaexample.views.adapter.TicketAdapter;
 
 import java.util.List;
 
