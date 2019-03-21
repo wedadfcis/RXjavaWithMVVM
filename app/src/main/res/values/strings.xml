@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Flight Tickets</string>
+    <string name="from">From :</string>
+    <string name="to">To :</string>
+    <string name="description">Description :</string>
+    <string name="network_error">check your connectivity</string>
+</resources>
