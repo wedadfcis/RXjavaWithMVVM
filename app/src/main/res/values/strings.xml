@@ -3,5 +3,5 @@
     <string name="from">From :</string>
     <string name="to">To :</string>
     <string name="description">Description :</string>
-    <string name="network_error">check your connectivity</string>
+    <string name="no_data">Data no\'t found</string>
 </resources>

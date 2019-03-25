@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.tikets;
+package com.example.rxjavaexample.views.tikets.list;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.rxjavaexample.R;
-import com.example.rxjavaexample.views.Base.BaseFragment;
+import com.example.rxjavaexample.helper.Utils;
 import com.example.rxjavaexample.models.dto.Ticket;
+import com.example.rxjavaexample.views.Base.BaseFragment;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     private TicketsViewModel ticketsViewModel;
     private LoadTickets loadTickets;
     private TicketAdapter ticketAdapter;
+
     public TicketsFragment() {
         // Required empty public constructor
     }
@@ -105,9 +107,10 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     @Override
     public void loadTickets(List<Ticket> tickets) {
 
-        if (tickets != null && tickets.size() >0 )
-        {
+        if (tickets != null && tickets.size() > 0) {
             ticketAdapter.setTickets(tickets);
+        } else {
+            Utils.showToastMessage(getString(R.string.no_data), getActivity());
         }
     }
 }

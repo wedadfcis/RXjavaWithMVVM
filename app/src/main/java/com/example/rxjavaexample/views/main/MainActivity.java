@@ -3,9 +3,9 @@ package com.example.rxjavaexample.views.main;
 import android.os.Bundle;
 
 import com.example.rxjavaexample.R;
-import com.example.rxjavaexample.common.helper.Constants;
+import com.example.rxjavaexample.helper.Constants;
 import com.example.rxjavaexample.views.Base.BaseActivity;
-import com.example.rxjavaexample.views.tikets.TicketsFragment;
+import com.example.rxjavaexample.views.tikets.list.TicketsFragment;
 
 public class MainActivity extends BaseActivity {
 

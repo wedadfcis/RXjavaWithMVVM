@@ -6,11 +6,11 @@ public class Price {
     private float price;
     private String seats;
     private String currency;
- 
+
     @SerializedName("flight_number")
     private
     String flightNumber;
- 
+
     private String from;
     private String to;
 

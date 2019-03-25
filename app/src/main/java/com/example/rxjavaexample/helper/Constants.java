@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.common.helper;
+package com.example.rxjavaexample.helper;
 
 public class Constants {
     public class Network {

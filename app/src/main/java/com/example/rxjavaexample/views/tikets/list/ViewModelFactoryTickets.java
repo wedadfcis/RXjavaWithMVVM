@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.tikets;
+package com.example.rxjavaexample.views.tikets.list;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

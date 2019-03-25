@@ -1,4 +1,7 @@
-package com.example.rxjavaexample.common.helper;
+package com.example.rxjavaexample.helper;
+
+import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,4 +23,7 @@ public class Utils {
         return list;
     }
 
+    public static void showToastMessage(String message, Context context) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
 }

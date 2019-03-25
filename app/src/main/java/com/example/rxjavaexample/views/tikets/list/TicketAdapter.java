@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.tikets;
+package com.example.rxjavaexample.views.tikets.list;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rxjavaexample.R;
-import com.example.rxjavaexample.common.helper.ImageLoader;
+import com.example.rxjavaexample.helper.ImageLoader;
 import com.example.rxjavaexample.models.dto.Ticket;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
         ticketViewHolder.txtTo.setText(context.getString(R.string.to) + " " + currentTicket.getTo());
         ticketViewHolder.txtFrom.setText(context.getString(R.string.from) + " " + currentTicket.getFrom());
         ticketViewHolder.txtDescription.setText(context.getString(R.string.description) + " " + currentTicket.getInstructions());
-        if(!ticketViewHolder.imgLogo.equals(null) && !ticketViewHolder.imgLogo.equals("")) {
+        if (!ticketViewHolder.imgLogo.equals(null) && !ticketViewHolder.imgLogo.equals("")) {
             ImageLoader.loadImage(ticketViewHolder.imgLogo, currentTicket.getAirline().getLogo());
         }
     }

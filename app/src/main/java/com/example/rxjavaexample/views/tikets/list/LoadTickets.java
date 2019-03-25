@@ -1,4 +1,4 @@
-package com.example.rxjavaexample.views.tikets;
+package com.example.rxjavaexample.views.tikets.list;
 
 import com.example.rxjavaexample.models.dto.Ticket;
 

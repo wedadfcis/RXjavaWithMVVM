@@ -3,7 +3,7 @@ package com.example.rxjavaexample.retrofite;
 import android.Manifest;
 import android.support.annotation.RequiresPermission;
 
-import com.example.rxjavaexample.common.helper.Constants;
+import com.example.rxjavaexample.helper.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

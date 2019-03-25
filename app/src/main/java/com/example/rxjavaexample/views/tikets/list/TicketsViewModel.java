@@ -1,12 +1,9 @@
-package com.example.rxjavaexample.views.tikets;
+package com.example.rxjavaexample.views.tikets.list;
 
-import android.app.Application;
-
-import com.example.rxjavaexample.R;
-import com.example.rxjavaexample.views.Base.BaseViewModel;
-import com.example.rxjavaexample.common.helper.Utils;
+import com.example.rxjavaexample.helper.Utils;
 import com.example.rxjavaexample.models.dto.Price;
 import com.example.rxjavaexample.models.dto.Ticket;
+import com.example.rxjavaexample.views.Base.BaseViewModel;
 
 import java.util.List;
 
@@ -26,22 +23,22 @@ public class TicketsViewModel extends BaseViewModel {
     }
 
     protected void getTickets() {
-            repositoryTickets = new RepositoryTickets();
-            getTicketsObservable().zipWith(getPriceObservable(), new BiFunction<List<Ticket>, Price, List<Ticket>>() {
-                        @Override
-                        public List<Ticket> apply(List<Ticket> tickets, Price price) {
-                            for (int i = 0; i < tickets.size(); i++) {
-                                tickets.get(i).setPrice(price);
-                            }
-                            return tickets;
+        repositoryTickets = new RepositoryTickets();
+        getTicketsObservable().zipWith(getPriceObservable(), new BiFunction<List<Ticket>, Price, List<Ticket>>() {
+                    @Override
+                    public List<Ticket> apply(List<Ticket> tickets, Price price) {
+                        for (int i = 0; i < tickets.size(); i++) {
+                            tickets.get(i).setPrice(price);
                         }
+                        return tickets;
                     }
-            ).subscribeOn(Schedulers.io())
-                    .doOnSubscribe(disposable -> showLoading(true))
-                    .doOnSuccess(disposable -> showLoading(false))
-                    .doOnError(disposable -> showLoading(false))
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(getTicketsObserver());
+                }
+        ).subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> showLoading(true))
+                .doOnSuccess(disposable -> showLoading(false))
+                .doOnError(disposable -> showLoading(false))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getTicketsObserver());
 
 
     }
@@ -51,7 +48,9 @@ public class TicketsViewModel extends BaseViewModel {
 
             @Override
             public void onSuccess(Object o) {
-                loadTickets.loadTickets((List<Ticket>) Utils.convertObjectToList(o));
+                if (o != null) {
+                    loadTickets.loadTickets((List<Ticket>) Utils.convertObjectToList(o));
+                }
             }
 
             @Override
