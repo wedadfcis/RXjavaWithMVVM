@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton
 public class ViewModelFactoryTickets implements ViewModelProvider.Factory {
     private LoadTickets loadTickets;
 
