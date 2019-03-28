@@ -4,10 +4,16 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class ViewModelFactoryTickets implements ViewModelProvider.Factory {
     private LoadTickets loadTickets;
 
+    @Inject
     public ViewModelFactoryTickets(LoadTickets loadTickets) {
+
         this.loadTickets = loadTickets;
     }
 

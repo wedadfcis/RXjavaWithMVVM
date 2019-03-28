@@ -12,11 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.rxjavaexample.R;
+import com.example.rxjavaexample.di.component.DaggerTicketComponent;
+import com.example.rxjavaexample.di.component.TicketComponent;
 import com.example.rxjavaexample.helper.Utils;
 import com.example.rxjavaexample.models.dto.Ticket;
 import com.example.rxjavaexample.views.Base.BaseFragment;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 
 public class TicketsFragment extends BaseFragment implements LoadTickets {
@@ -25,6 +29,8 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     private TicketsViewModel ticketsViewModel;
     private LoadTickets loadTickets;
     private TicketAdapter ticketAdapter;
+    @Inject
+    ViewModelFactoryTickets viewModelFactoryTickets;
 
     public TicketsFragment() {
         // Required empty public constructor
@@ -61,14 +67,16 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         loadTickets = this;
+        injectDependencies();
+        initViewModels();
         bindViewModel();
         initializeRecyclerView();
     }
 
     @Override
     protected void initializeViews(View v) {
-        rvTickets = v.findViewById(R.id.recycler_ticket);
-        progressBar = v.findViewById(R.id.progress_bar);
+        rvTickets = v.findViewById(R.id.rvTickets);
+        progressBar = v.findViewById(R.id.progressBar);
     }
 
     @Override
@@ -78,10 +86,6 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
 
     @Override
     protected void bindViewModel() {
-        //define viewModelFactoryTicket
-        ViewModelFactoryTickets viewModelFactoryTickets = new ViewModelFactoryTickets(loadTickets);
-        //define viewModel
-        ticketsViewModel = ViewModelProviders.of(getActivity(), viewModelFactoryTickets).get(TicketsViewModel.class);
         // start fetching Tickets
         ticketsViewModel.getTickets();
         // observer on loading
@@ -96,6 +100,20 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
             progressBar.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    protected void injectDependencies() {
+        TicketComponent ticketComponent = DaggerTicketComponent.builder()
+                .ticketModule(new TicketModule(loadTickets))
+                .build();
+        ticketComponent.inject(this);
+    }
+
+    @Override
+    protected void initViewModels() {
+        //define viewModel
+        ticketsViewModel = ViewModelProviders.of(getActivity(), viewModelFactoryTickets).get(TicketsViewModel.class);
     }
 
     public void initializeRecyclerView() {

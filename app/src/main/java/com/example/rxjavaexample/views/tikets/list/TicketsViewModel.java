@@ -7,6 +7,8 @@ import com.example.rxjavaexample.views.Base.BaseViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;
@@ -16,8 +18,10 @@ import io.reactivex.schedulers.Schedulers;
 public class TicketsViewModel extends BaseViewModel {
 
     private RepositoryTickets repositoryTickets;
+
     private LoadTickets loadTickets;
 
+    @Inject
     public TicketsViewModel(LoadTickets loadTickets) {
         this.loadTickets = loadTickets;
     }

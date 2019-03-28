@@ -1,11 +1,10 @@
-package com.example.rxjavaexample.retrofite;
+package com.example.rxjavaexample.service;
 import com.example.rxjavaexample.models.dto.Price;
 import com.example.rxjavaexample.models.dto.Ticket;
 
 import java.util.List;
 
 import io.reactivex.Single;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

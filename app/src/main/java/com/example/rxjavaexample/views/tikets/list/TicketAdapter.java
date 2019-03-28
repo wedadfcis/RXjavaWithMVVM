@@ -18,7 +18,8 @@ import java.util.List;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketViewHolder> {
 
-    private Context context;
+
+    Context context;
     private List<Ticket> tickets;
 
     public TicketAdapter(Context context) {
@@ -62,10 +63,10 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
 
         public TicketViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtFrom = itemView.findViewById(R.id.txt_from);
-            txtDescription = itemView.findViewById(R.id.txt_description);
-            txtTo = itemView.findViewById(R.id.txt_to);
-            imgLogo = itemView.findViewById(R.id.image_logo);
+            txtFrom = itemView.findViewById(R.id.txtFrom);
+            txtDescription = itemView.findViewById(R.id.txtDescription);
+            txtTo = itemView.findViewById(R.id.txtTo);
+            imgLogo = itemView.findViewById(R.id.imgLogo);
         }
     }
 }

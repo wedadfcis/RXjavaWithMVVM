@@ -13,7 +13,11 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addFragment();
+        if(savedInstanceState == null)
+        {
+            TicketsFragment ticketsFragment = new TicketsFragment();
+            replaceFragment(R.id.fragmentContainer,ticketsFragment, Constants.FragmentTag.TICKETS_FRAGMENT_TAG);
+        }
     }
 
     @Override
@@ -26,9 +30,4 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void addFragment() {
-        TicketsFragment ticketsFragment = new TicketsFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.content, ticketsFragment, Constants.FragmentTag.TICKETS_FRAGMENT_TAG).commit();
-    }
 }

@@ -13,5 +13,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void showProgressBar(Boolean shouldShow);
 
+    protected abstract void injectDependencies();
+
+    protected abstract void initViewModels();
+
 
 }
