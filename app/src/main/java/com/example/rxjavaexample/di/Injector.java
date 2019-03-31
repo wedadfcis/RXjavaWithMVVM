@@ -4,7 +4,6 @@ package com.example.rxjavaexample.di;
 import com.example.rxjavaexample.di.component.AppComponent;
 import com.example.rxjavaexample.di.component.DaggerAppComponent;
 import com.example.rxjavaexample.helper.Constants;
-import com.example.rxjavaexample.helper.MyApplication;
 import com.example.rxjavaexample.service.RetrofitModule;
 
 public enum Injector {
@@ -12,7 +11,7 @@ public enum Injector {
     INSTANCE;
     private AppComponent appComponent;
 
-    public AppComponent initializeAppComponent(MyApplication application) {
+    public AppComponent initializeAppComponent() {
         appComponent = DaggerAppComponent.builder()
                 .retrofitModule(new RetrofitModule(Constants.Network.BASE_NETWORK_URL))
                 .build();

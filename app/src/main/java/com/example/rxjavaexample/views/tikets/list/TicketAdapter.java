@@ -16,6 +16,8 @@ import com.example.rxjavaexample.models.dto.Ticket;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketViewHolder> {
 
 

@@ -17,7 +17,7 @@ public class MyApplication extends Application {
 
     private void initializeApplicationComponent() {
         if (Injector.INSTANCE.getAppComponent() == null) {
-            Injector.INSTANCE.initializeAppComponent(this);
+            Injector.INSTANCE.initializeAppComponent();
         }
     }
 

@@ -1,6 +1,10 @@
 package com.example.rxjavaexample.views.tikets.list;
 
 
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.example.rxjavaexample.di.scope.TicketScope;
 
 import dagger.Module;
@@ -9,10 +13,14 @@ import dagger.Provides;
 @Module
 public class TicketModule {
 
-    LoadTickets loadTickets;
+    private final LoadTickets loadTickets;
+    private final Context context;
 
-    public TicketModule(LoadTickets loadTickets) {
+
+    public TicketModule(LoadTickets loadTickets ,Context context) {
         this.loadTickets = loadTickets;
+        this.context = context;
+
     }
 
     @TicketScope
@@ -26,6 +34,20 @@ public class TicketModule {
     @Provides
     ViewModelFactoryTickets provideViewModelFactory(LoadTickets loadTickets) {
         return new ViewModelFactoryTickets(loadTickets);
+    }
+
+    @TicketScope
+    @Provides
+    public RecyclerView.LayoutManager provideLayoutManger() {
+        return new LinearLayoutManager(context);
+    }
+
+    @TicketScope
+    @Provides
+
+    public TicketAdapter provideTicketAdapter()
+    {
+        return new TicketAdapter(context);
     }
 
 }

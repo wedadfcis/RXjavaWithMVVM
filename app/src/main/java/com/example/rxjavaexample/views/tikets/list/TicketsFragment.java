@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.rxjavaexample.R;
+import com.example.rxjavaexample.di.Injector;
 import com.example.rxjavaexample.di.component.DaggerTicketComponent;
 import com.example.rxjavaexample.di.component.TicketComponent;
 import com.example.rxjavaexample.helper.Utils;
@@ -21,6 +22,7 @@ import com.example.rxjavaexample.views.Base.BaseFragment;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 
 public class TicketsFragment extends BaseFragment implements LoadTickets {
@@ -28,9 +30,13 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     private ProgressBar progressBar;
     private TicketsViewModel ticketsViewModel;
     private LoadTickets loadTickets;
-    private TicketAdapter ticketAdapter;
+    private TicketComponent ticketComponent;
+    @Inject
+    TicketAdapter ticketAdapter;
     @Inject
     ViewModelFactoryTickets viewModelFactoryTickets;
+    @Inject
+    RecyclerView.LayoutManager layoutManager;
 
     public TicketsFragment() {
         // Required empty public constructor
@@ -104,10 +110,10 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
 
     @Override
     protected void injectDependencies() {
-        TicketComponent ticketComponent = DaggerTicketComponent.builder()
-                .ticketModule(new TicketModule(loadTickets))
+        ticketComponent = DaggerTicketComponent.builder()
+                .ticketModule(new TicketModule(loadTickets,getActivity()))
                 .build();
-        ticketComponent.inject(this);
+                ticketComponent.inject(this);
     }
 
     @Override
@@ -117,8 +123,7 @@ public class TicketsFragment extends BaseFragment implements LoadTickets {
     }
 
     public void initializeRecyclerView() {
-        rvTickets.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ticketAdapter = new TicketAdapter(getActivity());
+        rvTickets.setLayoutManager(layoutManager);
         rvTickets.setAdapter(ticketAdapter);
     }
 
