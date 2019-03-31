@@ -25,6 +25,13 @@ public class TicketModule {
 
     @TicketScope
     @Provides
+    RepositoryTickets provideRepositoryTickets()
+    {
+        return new RepositoryTickets();
+    }
+
+    @TicketScope
+    @Provides
     LoadTickets providesLoadTickets() {
         return loadTickets;
     }
@@ -32,8 +39,8 @@ public class TicketModule {
 
     @TicketScope
     @Provides
-    ViewModelFactoryTickets provideViewModelFactory(LoadTickets loadTickets) {
-        return new ViewModelFactoryTickets(loadTickets);
+    ViewModelFactoryTickets provideViewModelFactory( RepositoryTickets repositoryTickets) {
+        return new ViewModelFactoryTickets(loadTickets,repositoryTickets);
     }
 
     @TicketScope

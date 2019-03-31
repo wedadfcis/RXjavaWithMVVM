@@ -16,18 +16,16 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class TicketsViewModel extends BaseViewModel {
-
     private RepositoryTickets repositoryTickets;
-
     private LoadTickets loadTickets;
 
     @Inject
-    public TicketsViewModel(LoadTickets loadTickets) {
+    public TicketsViewModel(LoadTickets loadTickets, RepositoryTickets repositoryTickets) {
         this.loadTickets = loadTickets;
+        this.repositoryTickets = repositoryTickets;
     }
 
     protected void getTickets() {
-        repositoryTickets = new RepositoryTickets();
         getTicketsObservable().zipWith(getPriceObservable(), new BiFunction<List<Ticket>, Price, List<Ticket>>() {
                     @Override
                     public List<Ticket> apply(List<Ticket> tickets, Price price) {

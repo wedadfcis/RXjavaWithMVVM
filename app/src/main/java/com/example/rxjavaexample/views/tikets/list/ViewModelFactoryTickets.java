@@ -9,16 +9,18 @@ import javax.inject.Singleton;
 
 public class ViewModelFactoryTickets implements ViewModelProvider.Factory {
     private LoadTickets loadTickets;
+    private RepositoryTickets repositoryTickets;
 
     @Inject
-    public ViewModelFactoryTickets(LoadTickets loadTickets) {
+    public ViewModelFactoryTickets(LoadTickets loadTickets ,RepositoryTickets repositoryTickets) {
 
         this.loadTickets = loadTickets;
+        this.repositoryTickets = repositoryTickets;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new TicketsViewModel(loadTickets);
+        return (T) new TicketsViewModel(loadTickets ,repositoryTickets);
     }
 }
